@@ -13,7 +13,33 @@ body {
 background-image:url("https://shastasublime.github.io/Webp.net-resizeimage.jpg");
 }
 </style>
-      
+<script src="https://cdn.jsdelivr.net/npm/steemconnect@latest">
+
+var sc = require('steemconnect');
+
+var api = sc.Initialize({
+  app: 'calebotamus',
+  callbackURL: 'https://shastasublime.github.io',
+  accessToken: 'access_token',
+  scope: ['vote', 'comment']
+});
+
+var link = api.getLoginURL(state);
+console.log(link)
+// => https://steemconnect.com/oauth2/authorize?client_id=[app]&redirect_uri=[callbackURL]&scope=vote,comment&state=[state]
+
+api.me(function (err, res) {
+  console.log(err, res)
+});
+
+api.vote(voter, author, permlink, weight, function (err, res) {
+  console.log(err, res)
+});
+
+api.comment(parentAuthor, parentPermlink, author, permlink, title, body, jsonMetadata, function (err, res) {
+  console.log(err, res)
+});
+</script>
   </head>
   <body>
     <div id="banner">for user friendliness acceptcookies
