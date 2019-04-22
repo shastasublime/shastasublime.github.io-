@@ -17,7 +17,11 @@ var api = sc.Initialize({
 <body>
 <script>
 var link = api.getLoginURL(state);
+console.log(link);
+function myFun(){
 alert(link);
+};
 </script>
+<button onclick="myFun()">steemconnect</button>
 </body>
 </html>
