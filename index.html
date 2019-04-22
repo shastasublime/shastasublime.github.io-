@@ -5,7 +5,7 @@
   <title>Shastasublime</title>
   <script src="https://cdn.jsdelivr.net/npm/steemconnect@latest"></script>
   <script>
-function steemcon(){
+
     var sc = require('steemconnect');
 
 var api = sc.Initialize({
@@ -16,17 +16,15 @@ var api = sc.Initialize({
 });
 var link = api.getLoginURL(state);
 console.log(link);
+function init(){
+alert(link);
 };
 
   </script>
 <body>
 <script>
-window.onload=steemcon();
 
-function myFun(){
-alert(link)
-};
 </script>
-<button onclick="myFun()">steemconnect</button>
+<button onclick="init()">steemconnect</button>
 </body>
 </html>
