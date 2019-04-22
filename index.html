@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Shastasublime</title>
+   <script src="//cdn.steemjs.com/lib/latest/steemconnect.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/steemconnect@latest"></script>
   <script>
 
@@ -24,14 +25,72 @@ alert(link);
   </script>
 <body>
 <script>
-(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//cdn.steemjs.com/lib/latest/steemconnect-widget.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'sc-sdk'));</script>
- <span class="sc-vote" data-author="dantheman" data-permlink="who-really-controls-bitcoin"></span>
+
+
+[Tutorial] How to add Steemit login to your site with SteemConnect
+krnel (78) in tutorial •  2 years ago
+If you want to login to Steemit from your site and add features to interact with the blockchain as a user, you can use the great service SteemConnect. I highly recommend it :D
+Why use SteemConnect?
+I'm glad you asked!
+
+When you use the SteemConnect login authentication, it's a more trusted source for your user than for them to trust your site itself to handle logins and their password. This way if they trust SteemConnect, they can trust the login to your site. SteemConnect has a great respected team behind it, and they will help you if you need it. SteemConnect doesn't store your password, and neither should your site if you make your own Steemit login (as I had previously made, but now use SteemConnect).
+
+This post will show you how to setup a basic simple login page code for you to apply to your own site. SteemConnect also has code to vote, follow, comment and more, if you're looking to do more than just login.
+
+Tutorial
+1.
+I went to the site. I used my Steemit username and Posting Key to login. Easy. Nicely made:
+steemconnect-login8f4a8.gif
+2.
+Click on Create your app or Developers, then Setup you app:
+steemconnect-setup-app1e36f.gif
+3.
+Now fill in your name as the author, which will match the app parameter in the code. Also choose what you want authorization for from the user logging into your site. They will confirm the access requested when they login. And finally set your paths to your site that you want to allow your app to access. The Allowed redirect urls section corresponds to the callbackURL in the code.
+steemconnect-settings0e165.gif
+I'm not sure what changes from Development to Production mode. Maybe the SteemConnect team can clear that up in the comments if they read the post ;)
+
+* Also note that I am on my localhost and not a real production server. Use HTTPS when you go live.
+
+Code for login
+4.
+So I wanted to get a basic login working, just to know how to set that up.
+I found two examples of code from the github source for how to login. But I missed a variable case change between the two versions and couldn't get it working, which @fabien kindly fixed for me.
+
+Here is the mash up to form a basic login example. Put this in a login.html file to test:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Steem Connect Login</title>
+  <script src="//cdn.steemjs.com/lib/latest/steemconnect.min.js"></script>
+</head>
+<body>
+
+<script>
+  steemconnect.init({
+      app: 'calebotamus',
+      callbackURL: 'https://shastasublime.github.io'
+    });
+  var isAuth = false;
+  var loginURL = steemconnect.getLoginURL();
+
+  steemconnect.isAuthenticated(function(err, result) {
+      if (!err && result.isAuthenticated) {
+        isAuth = true;
+        var username = result.username;
+        //do more
+        console.log("logged in user: " + username);
+      }
+    });
+
+    function redirect() {
+      window.location = loginURL;
+    }
+</script>
+
+<a href="#" onClick="redirect()">Log In</a>
+<a href="https://steemconnect.com/logout">Log Out</a>
 
 
 <button onclick=init()>steemconnect</button>
