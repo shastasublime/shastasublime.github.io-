@@ -124,7 +124,7 @@ window.onload = function() {
         const self = this;
         this.isLoading = true;
         const permlink = 'steemconnect-' + new Date().getTime();
-        sc.comment('', '', this.username, permlink, '', this.input, '', function(err, result) {
+        sc.comment('calebotamus', 'i-wish-i-was-a-little-bit-baller-tirdgiyf', this.username, permlink, '', this.input, '', function(err, result) {
           self.isLoading = false;
           if (result) self.txId = result.result.id;
           if (err) self.error = err;
