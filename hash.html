@@ -8,10 +8,10 @@
 <body>
 <script src="https://gist.github.com/bonustrack/ba0202345808a1d1216c1ec02668c0b1.js"></script>
 <script>
- var crypto = require('crypto');
+ const crypto = require('crypto');
 
-var secret = 'poopnugget';
-var secretHash = crypto.createHash('sha256').update(secret).digest('hex');
+const secret = 'poopnugget';
+const secretHash = crypto.createHash('sha256').update(secret).digest('hex');
 
 document.getElementById("hash").innerHTML=secretHash;
 </script>
