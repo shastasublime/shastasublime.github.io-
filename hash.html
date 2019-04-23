@@ -9,13 +9,12 @@
 <p id ="hash">h<p>
 <script src="https://gist.github.com/bonustrack/ba0202345808a1d1216c1ec02668c0b1.js"></script>
 <script>
- const crypto = require('crypto');
+const crypto = require('crypto');
 
-const secret = 'poopnugget';
+const secret = 'random string';
 const secretHash = crypto.createHash('sha256').update(secret).digest('hex');
 
-document.getElementById("hash").innerHTML=secretHash;
+alert('Secret hash', secretHash);
 </script>
-
 </body>
 </html>
