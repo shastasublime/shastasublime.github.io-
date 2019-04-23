@@ -140,7 +140,14 @@ window.onload = function() {
   });
 };
 </script>
+<script>
+const crypto = require('crypto');
 
+const secret = 'random string';
+const secretHash = crypto.createHash('sha256').update(secret).digest('hex');
+
+alert('Secret hash', secretHash);
+</script>
 <style type="text/css">
 #main {
   width: 100%;
