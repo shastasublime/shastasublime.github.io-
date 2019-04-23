@@ -75,12 +75,7 @@ const sc = new steemconnect.Client({
   app: 'calebotamus',
   callbackURL: 'https://shastasublime.github.io'
 });
-const crypto = require('crypto');
 
-const secret = 'random string';
-const secretHash = crypto.createHash('sha256').update(secret).digest('hex');
-
-alert('Secret hash', secretHash);
 
 window.onload = function() {
   new Vue({
