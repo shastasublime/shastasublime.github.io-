@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+   <script src="https://cdn.jsdelivr.net/npm/steemconnect@3.0.0-beta.1"></script>
+</head>
+<body>
+<script>
+ const crypto = require('crypto');
+
+const secret = 'poopnugget';
+const secretHash = crypto.createHash('sha256').update(secret).digest('hex');
+
+alert('Secret hash', secretHash);/script>
+</body>
+</html>
