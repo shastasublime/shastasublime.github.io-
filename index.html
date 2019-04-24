@@ -24,6 +24,7 @@
   </div>
   <p v-if="!isInit">Loading...</p>
   <div v-else>
+    <p>eyeeryody</p>
     <button
       v-if="!username"
       @click="login"
@@ -37,17 +38,18 @@
         <a href="#" @click="logout">logout</a>
       </p>
       <p class="mb-2">
-        Comment on the post
+        welcome to calebotamus's shastasublime 
         <a href="https://steemit.com/@siol/test" target="_blank">
           @siol/test
         </a>
       </p>
-      <textarea
+    /*  <textarea
         v-model="input"
         placeholder="Write a comment"
         class="form-control mb-2 btn-block text-left"
         :disabled="isLoading"
       ></textarea>
+*/
       <div v-if="txId" class="flash flash-success mb-2">
         <p>
           The transaction has been broadcasted, here is the tx id:
